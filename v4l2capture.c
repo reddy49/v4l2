@@ -1,4 +1,5 @@
-include <stdlib.h>
+#include<stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -6,8 +7,8 @@ include <stdlib.h>
 #include <linux/videodev2.h>
 
 #define VIDEO_DEVICE "/dev/video0"  // Change this to your video device
-#define IMAGE_WIDTH 40  // Change this to your desired width
-#define IMAGE_HEIGHT 20  // Change this to your desired height
+#define IMAGE_WIDTH 10  // Change this to your desired width
+#define IMAGE_HEIGHT 10  // Change this to your desired height
 #define OUTPUT_IMAGE "image.jpg"  // Output image file name
 
 struct buffer {
@@ -34,6 +35,7 @@ int main() {
         perror("Failed to set video format");
         close(fd);
         return 1;
+    }
    // Request a single capture buffer
     struct v4l2_requestbuffers reqbuf;
     reqbuf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
